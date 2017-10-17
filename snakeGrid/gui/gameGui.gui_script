@@ -1,9 +1,25 @@
 
 
 
+function gameIsEnding(self)
+	gui.set_enabled(gui.get_node("playButton"), true)
+	msg.post(".", "acquire_input_focus")
+end
+
+
+function gameIsPlaying(self)
+	gui.set_enabled(gui.get_node("playButton"), false)
+	msg.post(".", "release_input_focus")
+	msg.post("#snake", "restart_game")
+end
+
+
 function init(self)
+	gui.set_enabled(gui.get_node("playButton"), false)
 	-- Add initialization code here
 	-- Remove this function if not needed
+	--Make the replay button invisible
+	--gameIsBeginning(self)
 end
 
 function final(self)
@@ -23,14 +39,25 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(gui.get_node("speed"), message.speed)
 	elseif message_id == hash("set_score") then
 		gui.set_text(gui.get_node("score"), message.score)
+	elseif message_id == hash("set_timer") then
+		gui.set_text(gui.get_node("timer"), message.timer)
+	elseif message_id == hash("game_start") then
+		gameIsBeginning(self)
+	elseif message_id == hash("game_end") then
+		--msg.post(".", "acquire_input_focus")
+		gameIsEnding(self)
+		--msg.post(".", "acquire_input_focus")
 	end
-	
-	
 end
 
 function on_input(self, action_id, action)
 	-- Add input-handling code here
 	-- Remove this function if not needed
+	
+	if action_id == hash("click") and gui.pick_node(gui.get_node("playButton"), action.x, action.y) and action.released then
+        --print("You clicked!")
+        gameIsPlaying(self)
+    end
 end
 
 function on_reload(self)
