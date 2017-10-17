@@ -1,9 +1,9 @@
 components {
   id: "grid"
-  component: "/graphics/grid.tilemap"
+  component: "/graphics/newSnake.tilemap"
   position {
-    x: 800.0
-    y: 200.0
+    x: 450.0
+    y: 0.0
     z: 0.0
   }
   rotation {
