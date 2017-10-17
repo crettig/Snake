@@ -1,5 +1,5 @@
 [project]
-title = My project
+title = PJP Snake
 version = 0.1
 
 [bootstrap]
@@ -16,5 +16,5 @@ height = 720
 scale = 0.02
 
 [script]
-shared_state = 1
+shared_state = 0
 
