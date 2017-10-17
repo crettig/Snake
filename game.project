@@ -18,3 +18,12 @@ scale = 0.02
 [script]
 shared_state = 0
 
+[network]
+http_timeout = 200.0
+
+[html5]
+set_custom_heap_size = 1
+include_dev_tool = 1
+custom_heap_size = 32843545
+archive_location_prefix = 
+
