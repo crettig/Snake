@@ -16,7 +16,7 @@ height = 720
 scale = 0.02
 
 [script]
-shared_state = 0
+shared_state = 1
 
 [network]
 http_timeout = 200.0
